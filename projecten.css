@@ -1,36 +1,74 @@
-<head>
-    <style>
-        ::-webkit-scrollbar { display:none; }
+/* Inhoud van style.css */
+::-webkit-scrollbar {
+    display:none;
+}
 
-        #overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            background: rgba(0, 0, 0, 0);
-        }
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0);
+}
 
-        @media (max-width: 991px) {
-            .menu-button.w-nav-button .menu-icon svg { color: #74ce77; }
-            body.lock-scroll { overflow: hidden; }
-            a.my-link:hover { color: #74ce77; }
-        }
+@media (max-width: 991px) {
+    .menu-button.w-nav-button .menu-icon svg {
+        color: #74ce77;
+    }
 
-        @media (min-width: 992px) {
-            .projecten-link, .projecten-link-border { color: white; }
-            body, html { overflow: hidden; }
-            .projecten-link-border { }
-            .border-color1 { border-color: #74ce77; }
-            .border-color2 { border-color: #d78e00; }
-            .border-color3 { border-color: #afff00; }
-            .border-color4 { border-color: #ed1111; }
-            .color1:hover { color: #74ce77; }
-            .color2:hover { color: #d78e00; }
-            .color3:hover { color: #afff00; }
-            .color4:hover { color: #ed1111; }
-        }
-    </style>
-</head>
+    body.lock-scroll {
+        overflow: hidden;
+    }
+
+    a.my-link:hover {
+        color: #74ce77;
+    }
+}
+
+@media (min-width: 992px) {
+    .projecten-link, .projecten-link-border {
+        color: white;
+    }
+
+    body, html {
+        overflow: hidden;
+    }
+
+    .projecten-link-border {
+    }
+
+    .border-color1 {
+        border-color: #74ce77;
+    }
+
+    .border-color2 {
+        border-color: #d78e00;
+    }
+
+    .border-color3 {
+        border-color: #afff00;
+    }
+
+    .border-color4 {
+        border-color: #ed1111;
+    }
+
+    .color1:hover {
+        color: #74ce77;
+    }
+
+    .color2:hover {
+        color: #d78e00;
+    }
+
+    .color3:hover {
+        color: #afff00;
+    }
+
+    .color4:hover {
+        color: #ed1111;
+    }
+}
