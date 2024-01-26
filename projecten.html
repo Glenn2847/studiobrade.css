@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <style>
+        /* removing scroll bar(vertical) */
+        ::-webkit-scrollbar {
+            display:none;
+        }
+
+        /* Overlay */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0); /* transparante achtergrond */
+        }
+
+        /* Voor schermen met een breedte van maximaal 991 pixels */
+        @media (max-width: 991px) {
+            .menu-button.w-nav-button .menu-icon svg {
+                color: #74ce77;
+            }
+
+            body.lock-scroll {
+                overflow: hidden;
+            }
+
+            a.my-link:hover {
+                color: #74ce77;
+            }
+        }
+
+        /* Voor schermen met een breedte van minimaal 992 pixels */
+        @media (min-width: 992px) {
+            .projecten-link, .projecten-link-border {
+                color: white;
+            }
+
+            body, html {
+                overflow: hidden;  /* Voorkom standaard scrollen */
+            }
+
+            .projecten-link-border {
+            }
+
+            .border-color1 {
+                border-color: #74ce77;
+            }
+
+            .border-color2 {
+                border-color: #d78e00;
+            }
+
+            .border-color3 {
+                border-color: #afff00;
+            }
+
+            .border-color4 {
+                border-color: #ed1111;
+            }
+
+            .color1:hover {
+                color: #74ce77;
+            }
+
+            .color2:hover {
+                color: #d78e00;
+            }
+
+            .color3:hover {
+                color: #afff00;
+            }
+
+            .color4:hover {
+                color: #ed1111;
+            }
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var hoverColor = '#74ce77';
+            var scrollPosition = 0;
+
+            $('a').hover(function() {
+                $(this).css('color', hoverColor);
+            }, function() {
+                $(this).css('color', '');
+            });
+
+            $(window).scroll(function() {
+                var scrollPos = $(window).scrollTop();
+                var vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+
+                if (scrollPos < vh * 0.93) {
+                    $('.menu-button.w-nav-button .menu-icon svg').css('color', '#74ce77');
+                    hoverColor = '#74ce77';
+                } else if (scrollPos >= vh * 0.93 && scrollPos < vh * 1.93) {
+                    $('.menu-button.w-nav-button .menu-icon svg').css('color', '#d78e00');
+                    hoverColor = '#d78e00';
+                } else if (scrollPos >= vh * 1.93 && scrollPos < vh * 2.93) {
+                    $('.menu-button.w-nav-button .menu-icon svg').css('color', '#afff00');
+                    hoverColor = '#afff00';
+                } else if (scrollPos >= vh * 2.93) {
+                    $('.menu-button.w-nav-button .menu-icon svg').css('color', '#ed1111');
+                    hoverColor = '#ed1111';
+                } else {
+                    $('.menu-button.w-nav-button .menu-icon svg').css('color', '#74ce77');
+                    hoverColor = '#74ce77';
+                }
+            });
+
+            $('.menu-button.w-nav-button').on('click', function() {
+                if ($('body').hasClass('no-scroll')) {
+                    $('body').removeClass('no-scroll').css('overflow', '');
+                    $(window).scrollTop(scrollPosition);
+                    $('body').css('top', '');
+                } else {
+                    scrollPosition = $(window).scrollTop();
+                    $('body').addClass('no-scroll').css('overflow', 'hidden');
+                    $('body').css('top', -scrollPosition + 'px');
+                }
+            });
+        });
+
+        function updateColors() {
+            var links = document.querySelectorAll('.projecten-link');
+            var borders = document.querySelectorAll('.projecten-link-border');
+            var embeds = document.querySelectorAll('.html-embed-3');
+            var vh = window.innerHeight;
+            var scrollPosition = window.scrollY;
+
+            var colorClass, borderColorClass;
+
+            if (scrollPosition < 0.93 * vh) {
+                colorClass = 'color1';
+                borderColorClass = 'border-color1';
+            } else if (scrollPosition < 1.93 * vh) {
+                colorClass = 'color2';
+                borderColorClass = 'border-color2';
+            } else if (scrollPosition < 2.93 * vh) {
+                colorClass = 'color3';
+                borderColorClass = 'border-color3';
+            } else {
+                colorClass = 'color4';
+                borderColorClass = 'border-color4';
+            }
+
+            links.forEach(function(link) {
+                link.classList.remove('color1', 'color2', 'color3', 'color4');
+                link.classList.add(colorClass);
+            });
+
+            borders.forEach(function(border) {
+                border.classList.remove('border-color1', 'border-color2', 'border-color3', 'border-color4', 'color1', 'color2', 'color3', 'color4');
+                border.classList.add(borderColorClass, colorClass);
+            });
+
+            embeds.forEach(function(embed) {
+                embed.classList.remove('color1', 'color2', 'color3', 'color4');
+                embed.classList.add(colorClass);
+            });
+        }
+
+        window.addEventListener('load', updateColors);
+        window.addEventListener('scroll', updateColors);
+    </script>
+</head>
+
+<body>
+    <!-- Inhoud van je pagina -->
+</body>
+
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollify/1.0.21/jquery.scrollify.min.js" integrity="sha512-UyX8JsMsNRW1cYl8BoxpcamonpwU2y7mSTsN0Z52plp7oKo1u92Xqfpv6lOlTyH3yiMXK+gU1jw0DVCsPTfKew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    $(document).on('mousewheel DOMMouseScroll touchmove', function(e) {
+        e.preventDefault();
+    });
+
+    $(function() {
+        if(window.innerWidth >= 992) {
+            $.scrollify({
+                section : ".panel",
+            });
+        }
+    });
+</script>
